@@ -9,8 +9,8 @@
 
 library(shiny)
 library(rsconnect)
-source("../A5/app_ui.R")
-source("../A5/app_server.R")
+source("https://raw.githubusercontent.com/info201a-au2022/a5-emma-esteboss/main/A5/app_ui.R")
+source("https://raw.githubusercontent.com/info201a-au2022/a5-emma-esteboss/main/A5/app_server.R")
 
 # Run the application 
 shinyApp(ui = ui, server = server)
