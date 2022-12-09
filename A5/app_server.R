@@ -188,6 +188,8 @@ co2_difference1950to2021 <- co2_2021 - co2_1950
 # ---------------------- ### INTERACTIVE SECTION ### ---------------------------
 
 ### Editing Data Frame ###
+continents <- c("Asia", "Europe", "North America", "South America",
+                "Australia", "Africa")
 chart_data <- data %>%
   filter(year >= 1950) %>%
   select("country", "year", 
@@ -198,27 +200,33 @@ chart_data <- data %>%
          "share_global_luc_co2", 
          "share_global_oil_co2", 
          "share_global_other_co2") %>%
-  filter(country != "World")
+  filter(country %in% continents) %>%
+  rename("region" = country)
 
 ### Server ###
 server <- function(input, output) {
   output$chart <- renderPlotly({
     shiny_chart_data <- chart_data %>%
-      filter(year == input$year) %>%
-      filter(input$source >= input$range[1]) %>% 
-      filter(input$source <= input$range[2])
-    plot <- ggplot(data = shiny_chart) +
-      geom_bar(mapping = aes(x = country,
-                             y = chartdata$input$source)) +
-      xlim(-425, 505) +
-      ylim(input$range) +
-      labs(title = "share of ",
-           subtitle = "Subtitle",
+      filter(year %in% (input$year[1]:input$year[2])) %>%
+      filter(region %in% c(input$region)) %>%
+      select("region", "year", input$source)
+    plot <- ggplot(data = shiny_chart_data) +
+      geom_bar(mapping = aes(x = year, 
+                             y = chart_data[[input$source]],
+                             fill = region),
+               stat = "identity",
+               position = "dodge") +
+      theme(axis.text.x = element_text(angle = 60)) +
+      labs(title = "Global Share in Different CO2 Sources",
            caption = "This is what the data shows.",
-           x = "Net Creditor/Debtor",
-           y = "Global Share",
-           color = "JDC Risk (2021)")
+           x = "Year",
+           y = "Share of CO2 (percentage)"
+      )
     shiny_chart <- ggplotly(plot)
     shiny_chart
   })
 }
+
+
+
+

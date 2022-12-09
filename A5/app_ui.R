@@ -26,7 +26,7 @@ widget_one <- sliderInput(
   label = "Year",
   min = 1950,
   max = 2021,
-  value = 2021
+  value = c(1995, 2019)
 )
 
 widget_two <- selectInput(
@@ -41,13 +41,14 @@ widget_two <- selectInput(
                  "Other Industry" = "share_global_other_co2")
 )
 
-widget_three <-sliderInput(
-  inputId = "range",
-  label = "Range of Data",
-  min = 0,
-  max = 100,
-  value = c(0, 25)
+widget_three <- checkboxGroupInput(
+  inputId = "region", 
+  label = "Region",
+  choices = c("Asia", "Europe", "North America", "South America",
+              "Australia", "Africa"),
+  selected = c("Asia", "Europe", "South America")
 )
+
 
 page_two <- tabPanel(
   "Interactive Chart",
@@ -57,12 +58,12 @@ page_two <- tabPanel(
       widget_one,
       widget_two,
       widget_three
-      )
-    ),
+      ),
     mainPanel(
       plotlyOutput(outputId = "chart"),
       p("Caption goes here")
     )
+  )
 )
 
 
