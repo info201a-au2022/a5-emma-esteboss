@@ -218,7 +218,6 @@ server <- function(input, output) {
                position = "dodge") +
       theme(axis.text.x = element_text(angle = 60)) +
       labs(title = "Annual Global Share in CO2 based on Source",
-           caption = "This is a bar graph that shows you the annual production-based emissions of CO2 (on the y-axis) from a CO2 source selected. You can choose emissions from coal, flaring, gas, land use change, oil, and other industries. The default graph will show the global share of CO2 production-based emissions from the total of all sources.  With the year shown on the x-axis, which you can also change the range for with the year slider input, you can view regional trends of emissions (decreasing or increasing) over time. For instance, in the default graph, you can see how Asia’s share of global CO2 emissions has increased, while South America has stayed fairly low. The different colors of the bar graph indicate the different regions (Asia, Europe, North America, South America, Australia, and Africa.",
            x = "Year",
            y = "Share of CO2 (percentage)",
            Label = "Region"

@@ -26,11 +26,6 @@ page_one <- tabPanel(
   textOutput("Value3"),
   textOutput("Value4"),
   textOutput("Value5")
- # p(paste("- The difference in global annual production-based CO2 emissions (including land use change) from between 1990 and 2021 is ", co2_difference1950to2021, " million tonnes.")),
- # p(paste("- In 2019, the country with the highest GHG emissions per capita is ", ghg_percap_highest_country, " with a value of ", ghg_percap_highest, " tonnes. The country with the lowest GHG emissions per capita is ", ghg_percap_lowest_country, " with a value of ", ghg_percap_lowest, " tonnes.")),
- # p(paste("- In 2020, the top 5 countries for consumption of CO2 per capita is " , avg_consumption_percap, ".")),
- # p(paste("- The country with the lowest co2 growth percentage was ", co2_growth_lowest_country, " with a score of ", co2_growth_lowest, " growth in 2021. Two decades earlier (in 2000) it was ",  co2_growth_lowest2021_in1990, "percent. The country with the highest co2 growth percentage was ", co2_growth_highest_country, "with a score of ",  co2_growth_highest , "percent growth in 2021. Two decades earlier (in 2000) it was ", co2_growth_highest2021_in1990, " percent.")),
- # p(paste("- In 2020,  the country with the highest CO2 emissions embedded in trade is ", trade_co2_highest_country, " with a value of ", trade_co2_highest, " million tonnes. The country with the lowest CO2 emissions embedded in trade is ", trade_co2_lowest_country, " with a value of ", trade_co2_lowest, " million tonnes.")),
 )
 
 
@@ -76,7 +71,8 @@ page_two <- tabPanel(
       widget_three
       ),
     mainPanel(
-      plotlyOutput(outputId = "chart")
+      plotlyOutput(outputId = "chart"),
+      p("This is a bar graph that shows you the annual production-based emissions of CO2 (on the y-axis) from a CO2 source selected. You can choose emissions from coal, flaring, gas, land use change, oil, and other industries. The default graph will show the global share of CO2 production-based emissions from the total of all sources.  With the year shown on the x-axis, which you can also change the range for with the year slider input, you can view regional trends of emissions (decreasing or increasing) over time. For instance, in the default graph, you can see how Asia’s share of global CO2 emissions has increased, while South America has stayed fairly low. The different colors of the bar graph indicate the different regions (Asia, Europe, North America, South America, Australia, and Africa.")
     )
   )
 )
