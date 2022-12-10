@@ -212,7 +212,7 @@ server <- function(input, output) {
       select("region", "year", input$source)
     plot <- ggplot(data = shiny_chart_data) +
       geom_bar(mapping = aes(x = year, 
-                             y = chart_data[[input$source]],
+                             y = .data[[input$source]],
                              fill = region),
                stat = "identity",
                position = "dodge") +
