@@ -11,9 +11,6 @@ source("https://github.com/info201a-au2022/a5-emma-esteboss/raw/main/A5/app_serv
 
 # ________________________________ INTRO PAGE __________________________________
 
-value1 <- paste("Using the Our World Data dataset, here are the statistics I found:")
-
-
 page_one <- tabPanel(
   "Introduction",
   titlePanel("Exploring CO2 and GHG Emmissions Data"),
@@ -23,8 +20,12 @@ page_one <- tabPanel(
   p("Our World Data provides data on CO2 and GHG emissions in different countries. Using their dataset, the first variable I decided to look at was just overall annual total production-based emissions of carbon dioxide (CO2), including land-use change, measured in million tonnes (not including emissions embedded in traded goods). The next variables I used to look at distribution of emissions. One of the total greenhouse gas emissions including land-use change and forestry, measured in tonnes of carbon dioxide-equivalents per capita. Another is consumption CO2, which is the annual consumption-based emissions of carbon dioxide (CO2), measured in tonnes per person.  I also look at annual percentage growth in total production-based emissions of carbon dioxide (CO₂), excluding land-use change in each country. Finally, I wanted to analyze the annual net carbon dioxide (CO₂) emissions embedded in trade for each country, measured in million tonnes. A positive value means the country is a net importer, while negative is net exporter."),
   p("Something else that I was interested in was the different sources of co2 emissions and how they appear differently across the globe. The next page will show what percent of shares in global carbon emission different regions are responsible for."),
   h3("Values"),
-  p(value1)
- # p(paste("Using the Our World Data dataset, here are the statistics I found:")),
+  p("Using the Our World Data dataset, here are the statistics I found:"),
+  textOutput("Value1"),
+  textOutput("Value2"),
+  textOutput("Value3"),
+  textOutput("Value4"),
+  textOutput("Value5")
  # p(paste("- The difference in global annual production-based CO2 emissions (including land use change) from between 1990 and 2021 is ", co2_difference1950to2021, " million tonnes.")),
  # p(paste("- In 2019, the country with the highest GHG emissions per capita is ", ghg_percap_highest_country, " with a value of ", ghg_percap_highest, " tonnes. The country with the lowest GHG emissions per capita is ", ghg_percap_lowest_country, " with a value of ", ghg_percap_lowest, " tonnes.")),
  # p(paste("- In 2020, the top 5 countries for consumption of CO2 per capita is " , avg_consumption_percap, ".")),
@@ -75,8 +76,7 @@ page_two <- tabPanel(
       widget_three
       ),
     mainPanel(
-      plotlyOutput(outputId = "chart"),
-      p("Caption goes here")
+      plotlyOutput(outputId = "chart")
     )
   )
 )

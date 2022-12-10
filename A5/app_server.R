@@ -226,6 +226,21 @@ server <- function(input, output) {
     shiny_chart <- ggplotly(plot)
     shiny_chart
   })
+  output$Value1 <- renderText({
+    paste("- The difference in global annual production-based CO2 emissions (including land use change) from between 1990 and 2021 is ", co2_difference1950to2021, " million tonnes.")
+  })
+  output$Value2 <- renderText({
+    paste("- In 2019, the country with the highest GHG emissions per capita is ", ghg_percap_highest_country, " with a value of ", ghg_percap_highest, " tonnes. The country with the lowest GHG emissions per capita is ", ghg_percap_lowest_country, " with a value of ", ghg_percap_lowest, " tonnes.")
+  })
+  output$Value3 <- renderText({
+    paste("- In 2020, the top 5 countries for consumption of CO2 per capita is " , avg_consumption_percap, ".")
+  })
+  output$Value4 <- renderText({
+    paste("- The country with the lowest co2 growth percentage was ", co2_growth_lowest_country, " with a score of ", co2_growth_lowest, " growth in 2021. Two decades earlier (in 2000) it was ",  co2_growth_lowest2021_in1990, "percent. The country with the highest co2 growth percentage was ", co2_growth_highest_country, "with a score of ",  co2_growth_highest , "percent growth in 2021. Two decades earlier (in 2000) it was ", co2_growth_highest2021_in1990, " percent.")
+  })
+  output$Value5 <- renderText({
+    paste("- In 2020,  the country with the highest CO2 emissions embedded in trade is ", trade_co2_highest_country, " with a value of ", trade_co2_highest, " million tonnes. The country with the lowest CO2 emissions embedded in trade is ", trade_co2_lowest_country, " with a value of ", trade_co2_lowest, " million tonnes.")
+  })
 }
 
 
